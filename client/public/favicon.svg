@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <style>
+      .bg { fill: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+      .star { fill: #fff; }
+    </style>
+  </defs>
+  <!-- Background -->
+  <rect width="100" height="100" fill="#667eea"/>
+  <rect width="100" height="100" fill="url(#grad)" opacity="0.1"/>
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#764ba2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#667eea;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- Center sparkle star -->
+  <circle cx="50" cy="50" r="35" fill="#667eea" opacity="0.2"/>
+  <!-- Main star shape -->
+  <polygon points="50,20 61,40 83,40 66,54 74,74 50,60 26,74 34,54 17,40 39,40" fill="#ffffff"/>
+  <!-- Smaller accent stars -->
+  <circle cx="25" cy="25" r="3" fill="#ffd700" opacity="0.8"/>
+  <circle cx="75" cy="30" r="2.5" fill="#ffd700" opacity="0.7"/>
+  <circle cx="70" cy="75" r="2" fill="#ffd700" opacity="0.6"/>
+</svg>

@@ -1,0 +1,6 @@
+.create-form { max-width: 600px; }
+
+.form-group { margin-bottom: 16px; }
+.form-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: #172b4d; }
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }

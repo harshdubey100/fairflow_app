@@ -1,0 +1,19 @@
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0052cc;
+}
+
+.login-box {
+  background: #fff;
+  padding: 40px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  min-width: 360px;
+}
+
+.login-title { font-size: 28px; font-weight: 700; margin-bottom: 8px; color: #172b4d; }
+.login-sub { color: #5e6c84; margin-bottom: 24px; }

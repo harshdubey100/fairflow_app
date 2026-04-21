@@ -1,0 +1,28 @@
+.ticket-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.ticket-table th {
+  background: #f4f5f7;
+  padding: 10px 14px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 600;
+  color: #5e6c84;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ticket-table td {
+  padding: 12px 14px;
+  border-top: 1px solid #f4f5f7;
+  font-size: 13px;
+}
+
+.ticket-row { cursor: pointer; }
+.ticket-row:hover td { background: #f8f9ff; }

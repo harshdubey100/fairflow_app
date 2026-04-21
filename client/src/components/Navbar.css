@@ -1,0 +1,21 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #0052cc;
+  color: #fff;
+  padding: 0 20px;
+  height: 52px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.navbar-brand { font-size: 18px; font-weight: 700; letter-spacing: 0.5px; }
+
+.navbar-right { display: flex; align-items: center; gap: 14px; }
+
+.navbar-user { font-size: 13px; }
+
+.badge-admin-role { background: #ff5630; color: #fff; }
+.badge-hr-role { background: #6554c0; color: #fff; }
+.badge-employee-role { background: #00b8d9; color: #fff; }

@@ -1,0 +1,111 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Users are managed by Clerk; we store only the Clerk user ID reference
+model User {
+  id        String   @id @default(cuid())
+  clerkId   String   @unique
+  email     String   @unique
+  name      String
+  role      Role     @default(EMPLOYEE)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  createdTickets  Ticket[]       @relation("CreatedBy")
+  assignedTickets Ticket[]       @relation("AssignedTo")
+  ticketHistory   TicketHistory[]
+  performance     Performance?
+
+  @@index([clerkId])
+}
+
+enum Role {
+  EMPLOYEE
+  HR
+  ADMIN
+}
+
+model Ticket {
+  id          String       @id @default(cuid())
+  title       String
+  description String
+  status      TicketStatus @default(OPEN)
+  priority    Priority     @default(MEDIUM)
+  storyPoints Int          @default(0)
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  resolvedAt  DateTime?
+
+  // Relations
+  createdById String
+  createdBy   User   @relation("CreatedBy", fields: [createdById], references: [id])
+
+  assignedToId String?
+  assignedTo   User?   @relation("AssignedTo", fields: [assignedToId], references: [id])
+
+  history TicketHistory[]
+
+  @@index([status])
+  @@index([assignedToId])
+  @@index([createdById])
+  @@index([priority])
+}
+
+enum TicketStatus {
+  OPEN
+  IN_PROGRESS
+  RESOLVED
+}
+
+enum Priority {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+model TicketHistory {
+  id        String       @id @default(cuid())
+  action    HistoryAction
+  metadata  Json?        // stores changed fields as JSON
+  createdAt DateTime     @default(now())
+
+  ticketId  String
+  ticket    Ticket @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+
+  changedById String
+  changedBy   User   @relation(fields: [changedById], references: [id])
+
+  @@index([ticketId])
+  @@index([changedById])
+}
+
+enum HistoryAction {
+  CREATED
+  UPDATED
+  ASSIGNED
+  RESOLVED
+  REOPENED
+  PRIORITY_CHANGED
+  STATUS_CHANGED
+}
+
+model Performance {
+  id                 String   @id @default(cuid())
+  ticketsResolved    Int      @default(0)
+  avgResolutionTime  Float    @default(0) // in hours
+  totalStoryPoints   Int      @default(0)
+  updatedAt          DateTime @updatedAt
+
+  employeeId String @unique
+  employee   User   @relation(fields: [employeeId], references: [id])
+
+  @@index([employeeId])
+}

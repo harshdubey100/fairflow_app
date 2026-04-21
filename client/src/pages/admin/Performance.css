@@ -1,0 +1,16 @@
+.perf-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.perf-card { padding: 20px; }
+
+.perf-name { font-size: 16px; font-weight: 600; color: #172b4d; }
+.perf-email { font-size: 12px; color: #5e6c84; margin-bottom: 16px; }
+
+.perf-stats { display: flex; gap: 20px; }
+
+.perf-stat { text-align: center; }
+.perf-stat-val { display: block; font-size: 22px; font-weight: 700; color: #0052cc; }
+.perf-stat-lbl { display: block; font-size: 11px; color: #5e6c84; text-transform: uppercase; margin-top: 2px; }

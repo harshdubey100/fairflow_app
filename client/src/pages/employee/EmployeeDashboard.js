@@ -18,6 +18,7 @@ const EmployeeDashboard = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    // Load employee-specific stats and active assignments for the landing view.
     getEmployeeDashboard()
       .then((res) => setData(res.data))
       .catch((err) => setError(err.response?.data?.error || 'Failed to load'))
@@ -44,6 +45,7 @@ const EmployeeDashboard = () => {
           </div>
 
           <h3 className="section-title">Active Tickets</h3>
+          {/* Keep empty state inline so the dashboard layout stays stable. */}
           {data.assignedTickets.length === 0
             ? <p style={{ color: '#5e6c84' }}>No active tickets.</p>
             : data.assignedTickets.map((t) => <TicketCard key={t.id} ticket={t} />)

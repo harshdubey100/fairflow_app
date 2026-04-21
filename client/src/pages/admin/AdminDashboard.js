@@ -18,6 +18,7 @@ const AdminDashboard = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    // Fetch dashboard aggregates, recent tickets, and performance in one request.
     getAdminDashboard()
       .then((res) => setData(res.data))
       .catch((err) => setError(err.response?.data?.error || 'Failed to load'))
@@ -41,6 +42,7 @@ const AdminDashboard = () => {
           <h3 className="section-title">Recent Tickets</h3>
           <TicketTable tickets={data.recentTickets} />
 
+          {/* Simple table keeps comparisons across employees scannable. */}
           <h3 className="section-title" style={{ marginTop: 28 }}>Employee Performance</h3>
           <table className="perf-table">
             <thead>

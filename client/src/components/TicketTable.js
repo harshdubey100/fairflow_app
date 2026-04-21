@@ -6,6 +6,7 @@ import './TicketTable.css';
 const TicketTable = ({ tickets }) => {
   const navigate = useNavigate();
   const { dbUser } = useAuthContext();
+  // Route ticket detail links by logged-in role.
   const base = dbUser?.role === 'ADMIN' || dbUser?.role === 'HR' ? '/admin' : '/employee';
 
   if (!tickets?.length) return <p style={{ color: '#5e6c84' }}>No tickets found.</p>;
@@ -26,6 +27,7 @@ const TicketTable = ({ tickets }) => {
         {tickets.map((t) => (
           <tr
             key={t.id}
+            // Entire row is clickable for faster navigation in lists.
             onClick={() => navigate(`${base}/tickets/${t.id}`)}
             className="ticket-row"
           >

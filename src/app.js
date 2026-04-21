@@ -14,7 +14,7 @@ const app = express();
 // Security & logging middleware
 app.use(helmet());
 app.use(cors({
-  origin: ['https://fairflow-app-backend.onrender.com', 'http://localhost:3001', 'http://localhost:3000', 'http://localhost:3002', 'http://localhost:3003'],
+  origin: ['https://fairflow-app-eta.vercel.app', 'http://localhost:3001', 'http://localhost:3000', 'http://localhost:3002', 'http://localhost:3003'],
   credentials: true,
 }));
 app.use(morgan('dev'));

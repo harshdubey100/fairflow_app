@@ -26,6 +26,7 @@ const ticketRoutes = require('./routes/ticket.routes');
 const userRoutes = require('./routes/user.routes');
 const performanceRoutes = require('./routes/performance.routes');
 const dashboardRoutes = require('./routes/dashboard.routes');
+const agentRoutes = require('./routes/agent.routes');
 const { errorHandler } = require('./middlewares/error.middleware');
 
 const app = express();
@@ -73,6 +74,9 @@ app.use('/api/performance', performanceRoutes);
 
 // Dashboard: Role-specific dashboard data (admin vs employee)
 app.use('/api/dashboard', dashboardRoutes);
+
+// Agent: LangGraph AI assistant (proxies to Python microservice)
+app.use('/api/agent', agentRoutes);
 
 // ============================================
 // Centralized Error Handler (Must be last)

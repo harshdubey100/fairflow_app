@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { TicketProvider } from './context/TicketContext';
 import ProtectedRoute from './routes/ProtectedRoute';
+import ChatModal from './components/ChatModal';
 
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
@@ -57,6 +58,8 @@ function App() {
             <Route path="*" element={<Navigate to="/login" replace />} />
           </Routes>
         </TicketProvider>
+        {/* Global AI chat — only shown when signed in */}
+        <ChatModal />
       </AuthProvider>
     </BrowserRouter>
   );

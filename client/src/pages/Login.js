@@ -12,7 +12,7 @@ const Login = () => {
       <div className="login-box">
         <h1 className="login-title">✨ FairFlow</h1>
         <p className="login-sub">Intelligent Ticket Management System</p>
-        <SignIn routing="hash" />
+        <SignIn routing="hash" afterSignInUrl="/dashboard" afterSignUpUrl="/dashboard" />
       </div>
     </div>
   );

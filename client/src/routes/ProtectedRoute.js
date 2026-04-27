@@ -16,8 +16,8 @@ const ProtectedRoute = ({ children, role }) => {
   if (!isSignedIn) return <Navigate to="/login" replace />;
   if (!dbUser) return <Loader />;
 
-  // Admin can access everything
-  if (dbUser.role === 'ADMIN') return children;
+  // Admin and HR can access all protected routes
+  if (dbUser.role === 'ADMIN' || dbUser.role === 'HR') return children;
 
   // Role mismatch — redirect to correct dashboard
   if (role && dbUser.role !== role) {
